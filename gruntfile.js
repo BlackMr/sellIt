@@ -51,7 +51,8 @@ module.exports = function(grunt) {
       },
       build: {
         files: {
-          'public/dist/css/style.min.css': 'src/css/style.css'
+          'public/dist/css/style.min.css': 'src/css/style.css',
+          'public/dist/css/style.min.css': 'src/css/settingsCss.css'
         }
       }
     },
@@ -76,7 +77,7 @@ watch: {
       }
     }, // nodemon
 
-    /*
+    
     concurrent: {
       dev: {
         tasks: ['jshint',  'nodemon', 'watch'],
@@ -85,8 +86,7 @@ watch: {
         }
       }
     } // concurrent
-    */
-  
+    
 
     // all of our configuration will go here
 
@@ -104,10 +104,10 @@ watch: {
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  //grunt.loadNpmTasks('grunt-contrib-concurrent');
+  grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-nodemon');
 
 
     // ============= // CREATE TASKS ========== //
-  grunt.registerTask('default', ['jshint', 'uglify', 'cssmin', 'less', 'nodemon','watch']); 
+  grunt.registerTask('default', ['jshint', 'uglify', 'cssmin', 'less', 'concurrent','nodemon','watch']); 
 };

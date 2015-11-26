@@ -12,5 +12,9 @@ app.get('/', function(req,res)
 
 });
 
+app.get('/admin', function(request,response){
+	response.sendFile(__dirname + '/public/view/settings.html');
+});
+
 server.listen(process.env.PORT || 8080);
 console.log('Listening on MagicPort 8080');
