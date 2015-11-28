@@ -11,14 +11,19 @@
 <h2>Admin Panel</h2>
 
 <h3>Products</h3>
-	
+-Add new Product +</br>
+-Remove Cathegory +</br>
+-Add Cathegory</br>
+</br>
+
 New Product Name: </br>
 	<input type="textbox" id="productNameField"></input>
 	<select name="decisionCreate" id="cathegoryOption">
 		<option value="select"selected>
 	</select>
+	<button id="addButton" onclick="addProduct()">Add Product</button>
+	<button id="removeCateg" onclick="removeCategContent()">Remove Cathegory</button></br>
 
-	<button id="addButton" onclick="addProduct()">Add</button>	
 	<!--
 	<select name="decisionDelete" id="cathegoryOptionDel">
 		<option selected>Plan 1
@@ -28,7 +33,16 @@ New Product Name: </br>
 		<option>Plan 5
 	</select>
 	!-->
-	<button id="removeCateg" onclick="removeCategContent()">Remove</button>
+	</br>
+	<input type="textbox" id="NewCathegoryField"></input>
+	<button id="addCateg" onclick="addNewCateg()">Add Cathegory</button>
+	</br>
+	
+	</br>
+	<form action="demo_form.asp">
+  <input type="file" name="pic" accept="image/*">
+  <input type="submit">
+	</form>
 <div class="existing" id="existing">
 	<div class="existing-products">
 		<ol class="existing-products-list" id="existingProductsList">

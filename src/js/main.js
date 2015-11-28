@@ -1,36 +1,24 @@
-
-
-
-console.log("Thats OK");
-
-
-
 var categ = {
 	categName: {
 		liveKits: [],
 		petProducts: [],
-		forHumans: []
+		forHumans: [],
 	}
 };
 
-
-
-//WILL also list products based on their cathegories
-//
 var productList = [];
 
 
-var whichCateg = Object.keys(categ.categName).length;//number of category types;
 //Constructor object
 var Product = function(Name,cathegory,desc) {
+
 	this.Name=Name;
 	this.cathegory = cathegory;
 	this.desc = desc;
 
-
+	var whichCateg = Object.keys(categ.categName).length;//number of category types;
 
 	//adds newly created objects to the "categ" object based on their "categName";
-		
 	 function addToCateg () {
 
 		for(var i=0;i<whichCateg;i++){
@@ -41,9 +29,6 @@ var Product = function(Name,cathegory,desc) {
 					Object.keys(categ.categName[cathegory].push(Name));	
 				}
 		}
-	
-
-	
 	}
 	//must run to add newly created objects to categ object
 	addToCateg();
@@ -69,6 +54,45 @@ for(var i=0;i<productList.length;i++){
 	existingProducts.appendChild(listItem);
 }
 
+//add new product to your inventory
+var addProduct = function(){
+	
+	var chosenCathegory = getCategOptions.options[getCategOptions.selectedIndex].text;
+	console.log("chosenCathegory" + chosenCathegory);
+	var createProduct3 = new Product(productName.value,chosenCathegory,"not bad");
+	productList.push(createProduct3);
+	var productLi = document.createElement('li');
+	
+	productLi.appendChild(document.createTextNode(createProduct3.Name));
+	existingProducts.appendChild(productLi);
+
+	console.log('---------');
+	console.log(categ.categName);
+	//console.log(categ.categName.petProducts);
+	//console.log(categ.categName.forHumans);
+	
+	console.log("---------");
+	
+	
+};
+
+//adds new cathegory to our object and option list
+function addNewCateg(){
+	var addCategText = document.getElementById('NewCathegoryField').value;
+	categ.categName[addCategText]= [];
+	console.log("categ.categName + " + Object.getOwnPropertyNames(categ.categName));
+
+	var addToOptionList=document.getElementById('cathegoryOption');
+	var option = document.createElement('option');
+	option.text=addCategText;
+	addToOptionList.add(option);
+	
+	//categ.categName.asd.push('Kaan');
+	
+}
+
+
+
 //textbox that takes new product name attempt to create
 var productName = document.getElementById('productNameField');
 
@@ -76,7 +100,7 @@ var productName = document.getElementById('productNameField');
 var getCategOptions= document.getElementById('cathegoryOption');
 
 //add category options in our settings.html;
-function addCategContent(){
+function addNewContent(){
 	for(var i=0;i<Object.keys(categ.categName).length;i++){
 		var option = document.createElement('option');
 		option.value=i+1;
@@ -84,7 +108,9 @@ function addCategContent(){
 		getCategOptions.add(option);	
 	}
 }
-addCategContent();
+addNewContent();
+
+
 function removeCategContent(){
 var categRemove= getCategOptions.options[getCategOptions.selectedIndex].text;
 
@@ -108,24 +134,7 @@ for(var i=0;i<whichCateg;i++){
 				}
 		}	
 }
-//add new product to your inventory
-var addProduct = function(){
-	
-	var chosenCathegory = getCategOptions.options[getCategOptions.selectedIndex].text;
-	console.log("chosenCathegory" + chosenCathegory);
-	var createProduct3 = new Product(productName.value,chosenCathegory,"not bad");
-	productList.push(createProduct3);
-	var productLi = document.createElement('li');
-	
-	productLi.appendChild(document.createTextNode(createProduct3.Name));
-	existingProducts.appendChild(productLi);
 
-	console.log(categ.categName.liveKits);
-	console.log(categ.categName.petProducts);
-	console.log(categ.categName.forHumans);
-	console.log("---------");
-	console.log(productList);
-};
 
 
 	
