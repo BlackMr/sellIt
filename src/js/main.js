@@ -20,7 +20,7 @@ var categ = {
 var productList = [];
 
 
-
+var whichCateg = Object.keys(categ.categName).length;//number of category types;
 //Constructor object
 var Product = function(Name,cathegory,desc) {
 	this.Name=Name;
@@ -30,7 +30,7 @@ var Product = function(Name,cathegory,desc) {
 
 
 	//adds newly created objects to the "categ" object based on their "categName";
-	var whichCateg = Object.keys(categ.categName).length;//number of category types;	
+		
 	 function addToCateg () {
 
 		for(var i=0;i<whichCateg;i++){
@@ -71,9 +71,46 @@ for(var i=0;i<productList.length;i++){
 
 //textbox that takes new product name attempt to create
 var productName = document.getElementById('productNameField');
+
+//add category preferences automated with 'categ.categName';
+var getCategOptions= document.getElementById('cathegoryOption');
+
+//add category options in our settings.html;
+function addCategContent(){
+	for(var i=0;i<Object.keys(categ.categName).length;i++){
+		var option = document.createElement('option');
+		option.value=i+1;
+		option.text=Object.getOwnPropertyNames(categ.categName)[i];
+		getCategOptions.add(option);	
+	}
+}
+addCategContent();
+function removeCategContent(){
+var categRemove= getCategOptions.options[getCategOptions.selectedIndex].text;
+
+
+
+for(var i=0;i<whichCateg;i++){
+			if(categRemove == Object.getOwnPropertyNames(categ.categName)[i])
+				{
+					console.log("will delete BUT");
+					
+					//delete Object.keys(categ.categName[categRemove]);
+					delete categ.categName[categRemove];
+					//delete from category option in html;
+					$("#cathegoryOption option:selected").remove();
+					//and make default choice option(empty); 
+					$("#cathegoryOption option[value='select']:selected");
+					
+	console.log(categ.categName.liveKits);
+	console.log(categ.categName.petProducts);
+	console.log(categ.categName.forHumans);	
+				}
+		}	
+}
 //add new product to your inventory
 var addProduct = function(){
-	var getCategOptions= document.getElementById('cathegoryOption');
+	
 	var chosenCathegory = getCategOptions.options[getCategOptions.selectedIndex].text;
 	console.log("chosenCathegory" + chosenCathegory);
 	var createProduct3 = new Product(productName.value,chosenCathegory,"not bad");
@@ -88,6 +125,7 @@ var addProduct = function(){
 	console.log(categ.categName.forHumans);
 	console.log("---------");
 	console.log(productList);
-};	
+};
+
 
 	

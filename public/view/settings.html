@@ -14,20 +14,25 @@
 	
 New Product Name: </br>
 	<input type="textbox" id="productNameField"></input>
-	<select name="decision" id="cathegoryOption">
+	<select name="decisionCreate" id="cathegoryOption">
+		<option value="select"selected>
+	</select>
+
+	<button id="addButton" onclick="addProduct()">Add</button>	
+	<!--
+	<select name="decisionDelete" id="cathegoryOptionDel">
 		<option selected>Plan 1
 		<option>liveKits
 		<option>petProducts
 		<option>forHumans
 		<option>Plan 5
 	</select>
-
-	<button id="addButton" onclick="addProduct()">Add</button>	
-
+	!-->
+	<button id="removeCateg" onclick="removeCategContent()">Remove</button>
 <div class="existing" id="existing">
 	<div class="existing-products">
 		<ol class="existing-products-list" id="existingProductsList">
-			<li>xxx</li>
+			<li>WILL DO SYNCRONISE WHILE REMOVE OF CATEGORY WITH OBJECTS(they dont lose their category property)</li>
 		</ol>
 	</div>
 </div>
